@@ -1,0 +1,216 @@
+{
+  "btbit": {
+    "source_name": "btbit",
+    "active": false,
+    "base_url": "http://en.btbit.net",
+    "query_tail": "/list/{keyword}/{page}-{sorted_by}-0.html",
+    "sorted_by": {
+      "default": 0,
+      "date": 1,
+      "size": 2,
+      "popular": 3
+    },
+    "proxy_channel": true,
+    "judge_result_xpath": "/html/body/div[@class='wrapper']/div[@class='p-wrapper']/div[contains(@class, 'sort-box')]",
+    "content_list_xpath": "/html/body/div[@class='wrapper']/div[@class='p-wrapper']/div[@class='pbox'][2]/div",
+    "title_content_xpath": "div[@class='title']/h3/a",
+    "title_strip_tags": [
+      "span"
+    ],
+    "magnet_xpath": "div[@class='sbar']/span[1]/a/@href",
+    "create_date_xpath": "div[@class='sbar']/span[3]/b/text()",
+    "size_xpath": "div[@class='sbar']/span[4]/b/text()",
+    "popular_xpath": "div[@class='sbar']/span[6]/b/text()"
+  },
+
+  "zhongziso": {
+    "source_name": "zhongziso",
+    "active": false,
+    "base_url": "https://www.zhongzilou.com",
+    "query_tail": "/list{sorted_by}/{keyword}/{page}",
+    "sorted_by": {
+      "default": "",
+      "date": "",
+      "size": "_length",
+      "popular": "_click"
+    },
+    "proxy_channel": false,
+    "judge_result_xpath": "/html/body/div[@id='wrapp']/div[@class='jumbotron']/div/div/div[@class='row'][2]/div/div[contains(@class, 'panel-body')]/table/tbody",
+    "content_list_xpath": "/html/body/div[@id='wrapp']/div[@class='jumbotron']/div/div/div[@class='row'][2]/div/div[contains(@class, 'panel-body')]/table/tbody",
+    "title_content_xpath": "tr[1]/td/div/h4/a",
+    "title_strip_tags": [
+      "span"
+    ],
+    "magnet_xpath": "tr[2]/td[@class='ls-magnet']/a/@href",
+    "create_date_xpath": "tr[2]/td[1]/strong/text()",
+    "size_xpath": "tr[2]/td[2]/strong/text()",
+    "popular_xpath": "tr[2]/td[3]/strong/text()"
+  },
+
+  "btants": {
+    "source_name": "btants",
+    "active": true,
+    "base_url": "http://www.btgat.com",
+    "query_tail": "/search/{keyword}-{sorted_by}-{page}",
+    "sorted_by": {
+      "default": "first-asc",
+      "date": "first-asc",
+      "size": "size-desc",
+      "popular": "popular-desc"
+    },
+    "proxy_channel": true,
+    "judge_result_xpath": "/html/body/div[@id='wrapper']/div[@id='content']/div[@id='wall']/div[@class='search-item']",
+    "content_list_xpath": "/html/body/div[@id='wrapper']/div[@id='content']/div[@id='wall']/div[@class='search-item']",
+    "title_content_xpath": "div[@class='item-title']/a",
+    "title_strip_tags": [
+      "span"
+    ],
+    "magnet_xpath": "div[@class='item-bar']/a[1]/@href",
+    "create_date_xpath": "div[@class='item-bar']/span[1]/b/text()",
+    "size_xpath": "div[@class='item-bar']/span[4]/b/text()",
+    "popular_xpath": "div[@class='item-bar']/span[2]/b/text()"
+  },
+
+  "nyaa": {
+    "source_name": "nyaa",
+    "active": false,
+    "base_url": "https://sukebei.nyaa.si",
+    "query_tail": "/?f=0&c=0_0&q={keyword}&p={page}&s={sorted_by}&o=desc",
+    "sorted_by": {
+      "default": "id",
+      "date": "id",
+      "size": "size",
+      "popular": "downloads"
+    },
+    "proxy_channel": true,
+    "judge_result_xpath": "/html/body/div/div[@class='table-responsive']/table/tbody/tr",
+    "content_list_xpath": "/html/body/div/div[@class='table-responsive']/table/tbody/tr",
+    "title_content_xpath": "td[2]/a",
+    "title_strip_tags": [],
+    "magnet_xpath": "td[3]/a[2]/@href",
+    "create_date_xpath": "td[5]/text()",
+    "size_xpath": "td[4]/text()",
+    "popular_xpath": "td[8]/text()"
+  },
+
+  "torrentkitty": {
+    "source_name": "torrentkitty",
+    "active": true,
+    "base_url": "https://www.torrentkitty.tv",
+    "query_tail": "/search/{keyword}/{page}",
+    "sorted_by": {
+      "default": "",
+      "date": "",
+      "size": "",
+      "popular": ""
+    },
+    "proxy_channel": true,
+    "judge_result_xpath": "/html/body/div[@id='main']/div[@class='wrapper']/table/tr[2]/td[@class='action']/a",
+    "content_list_xpath": "/html/body/div[@id='main']/div[@class='wrapper']/table/tr[position()>1]",
+    "title_content_xpath": "td[@class='name']",
+    "title_strip_tags": [],
+    "magnet_xpath": "td[@class='action']/a[2]/@href",
+    "create_date_xpath": "td[@class='date']/text()",
+    "size_xpath": "",
+    "popular_xpath": ""
+  },
+
+  "ciliwang": {
+    "source_name": "ciliwang",
+    "active": true,
+    "base_url": "https://www.ciliwang.club",
+    "query_tail": "/list.html?keyword={keyword}&sort={sorted_by}&page={page}",
+    "sorted_by": {
+      "default": "hot",
+      "date": "time",
+      "size": "",
+      "popular": "hot"
+    },
+    "proxy_channel": false,
+    "judge_result_xpath": "/html/body/div[@class='main_body']/div[@class='main_page']/div[@class='list_cont']/div[@class='single_cont']",
+    "content_list_xpath": "/html/body/div[@class='main_body']/div[@class='main_page']/div[@class='list_cont']/div[@class='single_cont']",
+    "title_content_xpath": "ul[@class='title']/h3/a[1]",
+    "title_strip_tags": [
+      "em"
+    ],
+    "magnet_xpath": "ul[@class='title']/h3/a[1]/@data-src",
+    "create_date_xpath": "ul[2]/li[1]/text()",
+    "size_xpath": "ul[2]/li[2]/span/text()",
+    "popular_xpath": "ul[2]/li[3]/text()"
+  },
+
+  "zooqle": {
+    "source_name": "zooqle",
+    "active": true,
+    "base_url": "https://zooqle.com",
+    "query_tail": "/search?q={keyword}&s={sorted_by}&pg={page}",
+    "sorted_by": {
+      "default": "",
+      "date": "dt",
+      "size": "sz",
+      "popular": "ns"
+    },
+
+    "proxy_channel": false,
+    "judge_result_xpath": "/html/body/div[@id='body_container']/div[@class='row']/div[@class='col-md-9']/div[@class='panel zq-panel zq-small']/div[@class='panel-body']/table/tr",
+    "content_list_xpath": "/html/body/div[@id='body_container']/div[@class='row']/div[@class='col-md-9']/div[@class='panel zq-panel zq-small']/div[@class='panel-body']/table/tr",
+    "title_content_xpath": "td[@class='text-trunc text-nowrap ']/a",
+    "title_strip_tags": [
+      "h1"
+    ],
+    "magnet_xpath": "td[@align='left']/ul/li[2]/a/@href",
+    "create_date_xpath": "td[@align='center'][2]/text()",
+    "size_xpath": "td[@align='center'][1]/div/div/text()",
+    "popular_xpath": "td[@align='center'][3]/div/div[1]/text()"
+  },
+
+  "chazhongzi": {
+    "source_name": "chazhongzi",
+    "active": true,
+    "base_url": "https://chazhongzi.com",
+    "query_tail": "/go/{keyword}/{sorted_by}/{page}",
+    "sorted_by": {
+      "default": "default",
+      "date": "time",
+      "size": "size",
+      "popular": "hot"
+    },
+    "proxy_channel": false,
+    "judge_result_xpath": "/html/body/main/div/div/div",
+    "content_list_xpath": "/html/body/main/div/div/div",
+    "title_content_xpath": "div[@class='card-content']/a[1]",
+    "title_strip_tags": [
+      "mark"
+    ],
+    "magnet_xpath": "div[@class='card-content']/a[2]/@href",
+    "create_date_xpath": "div[@class='card-action']/div[2]/b/text()",
+    "size_xpath": "div[@class='card-action']/div[3]/b/text()",
+    "popular_xpath": "div[@class='card-action']/div[4]/b/text()"
+  },
+
+  "ciliguo": {
+    "source_name": "ciliguo",
+    "active": true,
+    "base_url": "https://ciliguo.cc",
+    "query_tail": "/search?q={keyword}&s={sorted_by}&p={page}",
+    "sorted_by": {
+      "default": "",
+      "date": "",
+      "size": "",
+      "popular": ""
+    },
+    "proxy_channel": false,
+    "judge_result_xpath": "/html/body/div/div/div/div[1]/div[2]/div[1]/div/div[@class='card mb-4']",
+    "content_list_xpath": "/html/body/div/div/div/div[1]/div[2]/div[1]/div/div[@class='card mb-4']",
+    "title_content_xpath": "div[@class='card-body']/div[1]/a/span",
+    "title_strip_tags": [
+      "span"
+    ],
+    "magnet_xpath": "div[@class='card-body']/div[2]/div/button[2]/@data-src",
+    "create_date_xpath": "div[@class='card-footer']/div/div[2]/div[1]/div[1]/small/text()",
+    "size_xpath": "div[@class='card-footer']/div/div[2]/div[1]/div[2]/small/text()",
+    "popular_xpath": "div[@class='card-footer']/div/div[2]/div[2]/div[1]/small/text()"
+  }
+}
+
+

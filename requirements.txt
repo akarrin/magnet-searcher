@@ -1,0 +1,9 @@
+certifi==2019.9.11
+chardet==3.0.4
+Click==7.0
+configparser==4.0.2
+idna==2.8
+lxml==4.4.1
+PySocks==1.7.1
+requests==2.22.0
+urllib3==1.25.6
