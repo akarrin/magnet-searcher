@@ -45,7 +45,7 @@ def format_date(cook_date: str):
     :param cook_date: 爬取到的未经处理的日期字符串
     :return: 可读性更高的日期字符串，格式化的日期
     '''
-    is_format_date_found = re.search(r'(\d{4})\D*(\d{1,2})*\D*(\d)*', cook_date)
+    is_format_date_found = re.search(r'(\d{4})\D*(\d{1,2})*\D*(\d*)', cook_date)
     if is_format_date_found:
         useful_date = list(filter(None, list(is_format_date_found.groups())))
         date_format_shape = "-".join(useful_date)
@@ -75,4 +75,4 @@ def format_popular(cook_popular_index: str):
 
 
 if __name__ == "__main__":
-    print(format_date('创建时间：2019-07-07'))
+    print(format_date('创建时间：2019-10-11'))
