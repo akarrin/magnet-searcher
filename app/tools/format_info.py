@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 import re
 import arrow
+from arrow.locales import ChineseCNLocale
 
 
 def get_original_magnet(cook_magnet: str):
@@ -65,8 +66,12 @@ def format_date(cook_date: str):
                                                years=-year).format('YYYY-MM-DD')
         except AttributeError:
             format_date = '1900-01-01'
+
+    # 因为arrow包0.15.2版本中文适配问题,需要在locales.py中第797行增加week、weeks的key和值，否则周会报错
+    ChineseCNLocale.timeframes.setdefault('week', '1周')
+    ChineseCNLocale.timeframes.setdefault('weeks', '{0}周')
     human_readable_date = arrow.get(format_date, 'YYYY-MM-DD').humanize(
-        locale='zh')  # 因为arrow包0.15.2版本中文适配问题,需要在locales.py中第797行增加week、weeks的key和值，否则周会报错
+        locale='zh')
     return human_readable_date, format_date
 
 
