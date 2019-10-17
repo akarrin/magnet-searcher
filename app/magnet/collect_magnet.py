@@ -47,7 +47,7 @@ def collect_magnet(keyword: str, require_count: int, sorted_by: int = SORTED_BY_
                 print(f'\r{e}', end='', flush=True)
                 logger('exception', f'\n{e}')
                 break
-            except SSLError:
+            except SSLError as e:
                 print('\r' + ' ' * 100, end='', flush=True)
                 print(f'\rSSL Error, 跳过{source_name}', end='', flush=True)
                 logger('exception', f'\n{e}')
@@ -57,7 +57,7 @@ def collect_magnet(keyword: str, require_count: int, sorted_by: int = SORTED_BY_
                 print(f'\r请求{source_name}超时', end='', flush=True)
                 logger('exception', f'\n{e}')
                 break
-            except IndexError:
+            except IndexError as e:
                 print('\r' + ' ' * 100, end='', flush=True)
                 print(f'\r{source_name}中没有找到该资源', end='', flush=True)
                 logger('exception', f'\n{e}')

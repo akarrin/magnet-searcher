@@ -32,7 +32,7 @@ PROXIES = {
     'https': config.get('PROXIES', 'https', fallback=None),
 }
 
-REQUEST_TIME_OUT = config.getint('TIME OUT', 'REQUEST_TIME_OUT', fallback=None)
+REQUEST_TIME_OUT = config.getint('TIME OUT', 'request_time_out', fallback=None)
 
 FAKE_HEADERS = {
     'Accept': config.get('FAKE HEADERS', 'Accept', fallback=None),
@@ -46,6 +46,3 @@ FAKE_HEADERS = {
 OUTPUT_PATH = Path.home() / 'Desktop'  # 默认目录为桌面
 
 DEBUG = config.getboolean('DEBUG', 'DEBUG', fallback=False)
-
-if __name__ == '__main__':
-    print(PROXIES)

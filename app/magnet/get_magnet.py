@@ -3,7 +3,7 @@ from lxml import html
 import requests
 from requests.exceptions import Timeout
 from app.config import PROXIES, FAKE_HEADERS, REQUEST_TIME_OUT
-from ..tools.get_original_magnet import get_original_magnet
+from ..tools.format_info import get_original_magnet, format_size, format_date, format_popular
 from ..exceptions.error import HttpError
 from app.const import *
 
@@ -37,34 +37,35 @@ def get_magnet(source: dict, keyword: str, page: int, sorted_by: int = SORTED_BY
             else:
                 content_list = response_xpath.xpath(source.get('content_list_xpath'))
                 for a_content in content_list:
-                    title_content = a_content.xpath(source.get('title_content_xpath'))[0]
-                    for title_strip_tap in source.get('title_strip_tags'):
-                        html.etree.strip_tags(title_content, title_strip_tap)  # 删除在title_strip_tags中的标签,保留内容
-                    title = ''.join(title_content.xpath('text()')).strip()
+                    title = a_content.xpath(source.get('title_content_xpath')).strip()
                     try:
-                        magnet = get_original_magnet(a_content.xpath(source.get('magnet_xpath'))[0]).strip()  # 格式化mangnet
+                        magnet = get_original_magnet(a_content.xpath(source.get('magnet_xpath')))  # 格式化mangnet
                     except:
                         magnet = MAGNET_NOT_FOUND
                     try:
-                        create_date = a_content.xpath(source.get('create_date_xpath'))[0].strip()
+                        create_date, format_create_date = format_date(a_content.xpath(source.get('create_date_xpath')))
+
                     except:
-                        create_date = CREATE_DATE_NOT_FOUND
+                        create_date, format_create_date = CREATE_DATE_NOT_FOUND, '0'
                     try:
-                        size = a_content.xpath(source.get('size_xpath'))[0].strip()
+                        size, size_as_mb = format_size(a_content.xpath(source.get('size_xpath')))
                     except:
                         size = SIZE_NOT_FOUND
+                        size_as_mb = 0
                     try:
-                        popular = a_content.xpath(source.get('popular_xpath'))[0].strip()
+                        popular = format_popular(a_content.xpath(source.get('popular_xpath')))
                     except:
-                        popular = POPULAR_NOT_FOUND
+                        popular = 0
 
                     a_result_dict = {
                         'title': title,
                         'magnet': magnet,
                         'size': size,
+                        'size_as_mb': size_as_mb,
                         'create_date': create_date,
+                        'format_create_date': format_create_date,
                         'popular': popular,
-                        'source_name': source_name
+                        'source_name': source_name,
                     }
                     yield a_result_dict
         else:

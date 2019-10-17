@@ -20,14 +20,11 @@
     "proxy_channel": true,  # 是否需要代理,如需要代理但config.py中未设置代理,则直接略过该搜索源
     "judge_result_xpath": "/html/body/div[@class='wrapper']/div[@class='p-wrapper']/div[contains(@class, 'sort-box')]",  # 判断是否有搜索结果的xpath
     "content_list_xpath": "/html/body/div[@class='wrapper']/div[@class='p-wrapper']/div[@class='pbox'][2]/div",  # 搜索结果列表的xpath
-    "title_content_xpath": "div[@class='title']/h3/a",  # 标题的xpath,接上content_list_xpath
-    "title_strip_tags": [
-      "span"
-    ],  # 标题中去除的标签，使得标题完整
-    "magnet_xpath": "div[@class='sbar']/span[1]/a/@href",  # magnet的xpath,接上content_list_xpath
-    "create_date_xpath": "div[@class='sbar']/span[3]/b/text()",  # 资源日期的xpath,接上content_list_xpath,可为空
-    "size_xpath": "div[@class='sbar']/span[4]/b/text()",  # 资源大小的xpath,接上content_list_xpath,可为空
-    "popular_xpath": "div[@class='sbar']/span[6]/b/text()"  # 资源热度的xpath,接上content_list_xpath,可为空
+    "title_content_xpath": "string(div[@class='title']/h3/a)",  # 标题的xpath,接上content_list_xpath
+    "magnet_xpath": "string(div[@class='sbar']/span[1]/a/@href)",  # magnet的xpath,接上content_list_xpath
+    "create_date_xpath": "string(div[@class='sbar']/span[3]/b)",  # 资源日期的xpath,接上content_list_xpath,可为空
+    "size_xpath": "string(div[@class='sbar']/span[4]/b)",  # 资源大小的xpath,接上content_list_xpath,可为空
+    "popular_xpath": "string(div[@class='sbar']/span[6]/b)"  # 资源热度的xpath,接上content_list_xpath,可为空
   }
 '''
 

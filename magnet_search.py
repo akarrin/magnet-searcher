@@ -5,6 +5,7 @@ from app.const import *
 from app.tools.hight_light_keyword import highlight_keyword
 from app.tools.get_resolution import get_resolution
 from app.tools.output_magnet import output_magnet, format_file_name
+from app.tools.sort_magnet_result import sort_magnet_result
 import click
 from app.config import OUTPUT_PATH
 import io
@@ -34,6 +35,7 @@ def magnet_search_order(keyword, count, sort, source, extras=''):
         magnet_list = collect_magnet(keyword=keyword, require_count=require_count, sorted_by=sorted_by,
                                      first_search_source=source)
         if magnet_list:
+            sort_magnet_result(magnet_result=magnet_list, sort_key=sorted_by, is_reverse=True)
             for magnet_flag, a_magnet in enumerate(magnet_list):
                 fg = ['cyan', 'magenta'][magnet_flag % 2]
                 prettify_echo(magnet_dict=a_magnet, fg=fg, keyword=keyword)

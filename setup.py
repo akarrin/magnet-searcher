@@ -31,7 +31,7 @@ setup(
     packages=find_packages(),
     description='command line magnet searcher tool',
     author='Akarrin',
-    install_requires=["requests", "lxml", "Click", "Pysocks", "configparser"],
+    install_requires=["requests", "lxml", "Click", "Pysocks", "configparser", "arrow"],
     url='https://github.com/akarrin/magnet-searcher',
     py_modules=["magnet_search"],
     data_files=[('.', ['config.ini', 'rules.json'])],

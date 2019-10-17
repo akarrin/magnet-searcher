@@ -128,3 +128,4 @@ dmypy.json
 test/
 .idea/
 debug.log
+test.py
