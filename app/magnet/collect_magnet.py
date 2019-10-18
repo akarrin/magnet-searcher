@@ -86,4 +86,3 @@ def choose_source(first_search_source: str = None):
         else:
             source_list.append(rule_name)
     return source_list
-

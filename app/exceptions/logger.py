@@ -7,7 +7,6 @@
 
 import logging
 from app.config import DEBUG
-from pkg_resources import Requirement, resource_filename
 import configparser
 from ..config import readable_config_name
 

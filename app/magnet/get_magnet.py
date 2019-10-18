@@ -4,7 +4,8 @@ import requests
 from requests.exceptions import Timeout
 from app.config import PROXIES, FAKE_HEADERS, REQUEST_TIME_OUT
 from ..tools.format_info import get_original_magnet, format_size, format_date, format_popular
-from ..exceptions.error import HttpError
+from ..exceptions.error import *
+from ..exceptions.logger import logger
 from app.const import *
 
 
@@ -40,21 +41,24 @@ def get_magnet(source: dict, keyword: str, page: int, sorted_by: int = SORTED_BY
                     title = a_content.xpath(source.get('title_content_xpath')).strip()
                     try:
                         magnet = get_original_magnet(a_content.xpath(source.get('magnet_xpath')))  # 格式化mangnet
-                    except:
+                    except FormatError as e:
+                        logger('exception', f'\n{e}')
                         magnet = MAGNET_NOT_FOUND
                     try:
                         create_date, format_create_date = format_date(a_content.xpath(source.get('create_date_xpath')))
-
-                    except:
+                    except FormatError as e:
+                        logger('exception', f'\n{e}')
                         create_date, format_create_date = CREATE_DATE_NOT_FOUND, '0'
                     try:
                         size, size_as_mb = format_size(a_content.xpath(source.get('size_xpath')))
-                    except:
+                    except FormatError as e:
+                        logger('exception', f'\n{e}')
                         size = SIZE_NOT_FOUND
                         size_as_mb = 0
                     try:
                         popular = format_popular(a_content.xpath(source.get('popular_xpath')))
-                    except:
+                    except FormatError as e:
+                        logger('exception', f'\n{e}')
                         popular = 0
 
                     a_result_dict = {
