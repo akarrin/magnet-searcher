@@ -40,7 +40,8 @@ def get_magnet(source: dict, keyword: str, page: int, sorted_by: int = SORTED_BY
                 for a_content in content_list:
                     title = a_content.xpath(source.get('title_content_xpath')).strip()
                     try:
-                        magnet = get_original_magnet(a_content.xpath(source.get('magnet_xpath')))  # 格式化mangnet
+                        magnet = a_content.xpath(source.get('magnet_xpath'))
+                        # magnet = get_original_magnet(magnet)  # 格式化mangnet
                     except FormatError as e:
                         logger('exception', f'\n{e}')
                         magnet = MAGNET_NOT_FOUND
